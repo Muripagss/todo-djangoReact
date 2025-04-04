@@ -46,9 +46,9 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -133,5 +133,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",  # Allow React frontend
+    "http://localhost:5173",  # For local React dev
+    "https://muripagss.github.io",  # For GitHub Pages deployment
+]
+
+# If needed, you can use this for debugging (remove it later in production)
+# CORS_ALLOW_ALL_ORIGINS = True
+
+# Optional but good to include for CSRF protection with trusted domains
+CSRF_TRUSTED_ORIGINS = [
+    "https://muripagss.github.io",
 ]
